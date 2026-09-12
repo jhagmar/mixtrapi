@@ -13,7 +13,7 @@ Protocol id: `mixtrapi/1`. Spec: [docs/spec.md](docs/spec.md). JSON Schema: [sch
 
 ## Bootstrap
 
-Node 22 or later. From a clone:
+Node 22.12 or later. From a clone:
 
 ```bash
 npm ci
