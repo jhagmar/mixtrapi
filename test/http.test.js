@@ -18,6 +18,7 @@ function jsonResponse(body, status = 200) {
 describe('createClient', () => {
   it('rejects a missing base URL and a non-function fetch', () => {
     assert.throws(() => createClient(''), MixtrapiError);
+    assert.throws(() => createClient('///'), MixtrapiError);
     assert.throws(() => createClient('http://x', { fetch: 1 }), MixtrapiError);
   });
 

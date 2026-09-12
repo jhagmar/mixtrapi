@@ -16,7 +16,7 @@ export function createClient(baseUrl, options = {}) {
   if (typeof baseUrl !== 'string' || baseUrl.length < 1) {
     throw new MixtrapiError('bad_request', 'baseUrl MUST be a non-empty string');
   }
-  const root = baseUrl.replace(/\/+$/, '');
+  const root = originFromBaseUrl(baseUrl);
   const fetchImpl = options.fetch ?? globalThis.fetch;
   if (typeof fetchImpl !== 'function') {
     throw new MixtrapiError('bad_request', 'fetch is unavailable');
@@ -167,6 +167,22 @@ export function createClient(baseUrl, options = {}) {
       return request('POST', `/v1/languages/${languageId}/enabled`, { enabled });
     },
   };
+}
+
+/**
+ * Trim trailing ASCII slashes in linear time. A `/+$/` replace on caller input is unbounded.
+ * @param {string} baseUrl
+ * @returns {string}
+ */
+function originFromBaseUrl(baseUrl) {
+  let end = baseUrl.length;
+  while (end > 0 && baseUrl.charCodeAt(end - 1) === 47) {
+    end -= 1;
+  }
+  if (end === 0) {
+    throw new MixtrapiError('bad_request', 'baseUrl MUST be a non-empty string');
+  }
+  return baseUrl.slice(0, end);
 }
 
 /**
