@@ -20,7 +20,7 @@
     "README.md"
   ],
   "scripts": {
-    "test": "c8 --include=src --check-coverage --lines 100 --functions 100 --branches 100 --statements 100 --reporter=text --reporter=lcov node --test test/",
+    "test": "c8 --include=src --check-coverage --lines 100 --functions 100 --branches 100 --statements 100 --reporter=text --reporter=lcov -- node --test \"test/*.test.js\"",
     "conformance": "node --test test/conformance.test.js",
     "lint": "prettier --check .",
     "format": "prettier --write .",
