@@ -10,7 +10,7 @@ RFC 2119 in the spec. Fail-closed encodings stay fail-closed unless a discussed 
 
 ## Bootstrap
 
-Node 22 or later.
+Node 22.12 or later.
 
 ```bash
 npm ci
