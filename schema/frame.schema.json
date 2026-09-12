@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jhagmar/mixtrapi/schema/frame.schema.json",
+  "title": "Frame",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "parent", "channel", "kind", "body"],
+  "properties": {
+    "id": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+    "parent": {
+      "anyOf": [
+        { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+        { "type": "null" }
+      ]
+    },
+    "channel": { "enum": ["fs", "lsp", "dap", "ctl"] },
+    "kind": { "type": "string", "minLength": 1 },
+    "body": { "type": "object" }
+  }
+}

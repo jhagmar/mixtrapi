@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jhagmar/mixtrapi/schema/capabilities.schema.json",
+  "title": "Capabilities",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol", "session", "auth", "workspace", "limits"],
+  "properties": {
+    "protocol": { "const": "mixtrapi/1" },
+    "session": { "$ref": "#/$defs/session" },
+    "auth": { "$ref": "#/$defs/auth" },
+    "workspace": { "$ref": "#/$defs/workspace" },
+    "limits": { "$ref": "#/$defs/limits" },
+    "language_switch": { "$ref": "#/$defs/language_switch" },
+    "catalog": { "$ref": "#/$defs/catalog" },
+    "run": { "$ref": "#/$defs/run" },
+    "debug": { "$ref": "#/$defs/debug" },
+    "admin": { "$ref": "#/$defs/admin" }
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["channel_path", "binary_tips"],
+      "properties": {
+        "channel_path": { "type": "string", "minLength": 1 },
+        "binary_tips": { "type": "boolean" }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["models"],
+      "properties": {
+        "models": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/auth_model" }
+        }
+      }
+    },
+    "auth_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "schema"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "schema": { "type": "object" }
+      }
+    },
+    "workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "list",
+        "read",
+        "create",
+        "update",
+        "delete",
+        "rename",
+        "mkdir",
+        "directories",
+        "binary",
+        "text_only",
+        "watch",
+        "max_files",
+        "max_bytes"
+      ],
+      "properties": {
+        "list": { "type": "boolean" },
+        "read": { "type": "boolean" },
+        "create": { "type": "boolean" },
+        "update": { "type": "boolean" },
+        "delete": { "type": "boolean" },
+        "rename": { "type": "boolean" },
+        "mkdir": { "type": "boolean" },
+        "directories": { "type": "boolean" },
+        "binary": { "type": "boolean" },
+        "text_only": { "type": "boolean" },
+        "watch": { "type": "boolean" },
+        "max_files": { "type": "integer", "minimum": 1 },
+        "max_bytes": { "type": "integer", "minimum": 1 },
+        "path_policy": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/path_policy" }
+        }
+      }
+    },
+    "path_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["glob", "ops"],
+      "properties": {
+        "glob": { "type": "string", "minLength": 1 },
+        "ops": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": ["list", "read", "create", "update", "delete", "rename", "mkdir"]
+          }
+        }
+      }
+    },
+    "language_switch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["languages_path"],
+      "properties": {
+        "languages_path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["list_path"],
+      "properties": {
+        "list_path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcomes"],
+      "properties": {
+        "outcomes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["pass_fail", "exit_code", "value"] }
+        }
+      }
+    },
+    "debug": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requires_run"],
+      "properties": {
+        "requires_run": { "type": "boolean" }
+      }
+    },
+    "admin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["login_path"],
+      "properties": {
+        "login_path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "grant_per_hour_per_addr",
+        "grants_pending_global",
+        "login_per_minute_per_addr",
+        "file_bytes",
+        "file_count",
+        "lsp_dap_bytes",
+        "log_bytes",
+        "display_name_chars"
+      ],
+      "properties": {
+        "grant_per_hour_per_addr": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "grants_pending_global": { "type": "integer", "minimum": 1, "maximum": 30 },
+        "login_per_minute_per_addr": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "file_bytes": { "type": "integer", "minimum": 1, "maximum": 1048576 },
+        "file_count": { "type": "integer", "minimum": 1, "maximum": 10000 },
+        "lsp_dap_bytes": { "type": "integer", "minimum": 1, "maximum": 2097152 },
+        "log_bytes": { "type": "integer", "minimum": 1, "maximum": 1048576 },
+        "display_name_chars": { "type": "integer", "minimum": 1, "maximum": 64 }
+      }
+    }
+  }
+}

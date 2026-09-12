@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jhagmar/mixtrapi/schema/session-token.schema.json",
+  "title": "SessionToken",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["session_id", "token", "token_type", "ws_url"],
+  "properties": {
+    "session_id": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+    "token": { "type": "string", "minLength": 1 },
+    "token_type": { "const": "Bearer" },
+    "expires_at": { "type": "integer", "minimum": 0 },
+    "ws_url": { "type": "string", "minLength": 1 }
+  }
+}

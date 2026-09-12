@@ -1,0 +1,44 @@
+{
+  "protocol": "mixtrapi/1",
+  "session": {
+    "channel_path": "/v1/sessions/{session_id}/channel",
+    "binary_tips": false
+  },
+  "auth": {
+    "models": [
+      {
+        "id": "urn:mixtrapi:auth:anonymous-mint",
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {}
+        }
+      }
+    ]
+  },
+  "workspace": {
+    "list": true,
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": true,
+    "rename": true,
+    "mkdir": true,
+    "directories": true,
+    "binary": false,
+    "text_only": true,
+    "watch": true,
+    "max_files": 10000,
+    "max_bytes": 1048576
+  },
+  "limits": {
+    "grant_per_hour_per_addr": 10,
+    "grants_pending_global": 30,
+    "login_per_minute_per_addr": 5,
+    "file_bytes": 1048576,
+    "file_count": 10000,
+    "lsp_dap_bytes": 2097152,
+    "log_bytes": 1048576,
+    "display_name_chars": 64
+  }
+}

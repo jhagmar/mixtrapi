@@ -1,0 +1,11 @@
+node_modules/
+coverage/
+.nyc_output/
+*.lcov
+.DS_Store
+.idea/
+*.swp
+.env
+.env.*
+!.env.example
+dist/
