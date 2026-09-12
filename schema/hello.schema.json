@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jhagmar/mixtrapi/schema/hello.schema.json",
+  "title": "Hello",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol", "session_id"],
+  "properties": {
+    "protocol": { "const": "mixtrapi/1" },
+    "session_id": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+    "language": { "type": "string", "minLength": 1 },
+    "problem_id": { "type": "string", "minLength": 1 }
+  }
+}

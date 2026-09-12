@@ -1,0 +1,50 @@
+{
+  "name": "mixtrapi",
+  "version": "1.0.0",
+  "description": "Mixtrapi protocol types, JSON Schema, and HTTP fetch helpers",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./schema/*": "./schema/*"
+  },
+  "files": [
+    "src",
+    "schema",
+    "docs",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "c8 --include=src --check-coverage --lines 100 --functions 100 --branches 100 --statements 100 --reporter=text --reporter=lcov node --test test/",
+    "conformance": "node --test test/conformance.test.js",
+    "lint": "prettier --check .",
+    "format": "prettier --write .",
+    "layering": "node scripts/layering.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhagmar/mixtrapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jhagmar/mixtrapi/issues"
+  },
+  "homepage": "https://github.com/jhagmar/mixtrapi#readme",
+  "keywords": [
+    "mixtrapi",
+    "lsp",
+    "dap",
+    "protocol",
+    "editor"
+  ],
+  "author": "Jonas Hagmar",
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "c8": "^10.1.3",
+    "prettier": "^3.6.2"
+  }
+}

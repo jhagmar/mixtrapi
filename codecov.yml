@@ -1,0 +1,16 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 100%
+        threshold: 0%
+    patch:
+      default:
+        target: 100%
+        threshold: 0%
+ignore:
+  - 'scripts/**'
+  - 'test/**'
+  - 'conformance/**'
+comment:
+  require_changes: true

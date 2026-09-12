@@ -1,0 +1,14 @@
+name: Spec change
+description: Propose a change to docs/spec.md
+labels: [spec]
+body:
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change
+      description: What MUST, SHOULD, or MAY would change, and why (UX, DX, or CI/CD).
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: Spec changes other than typos are discussed before implementation.

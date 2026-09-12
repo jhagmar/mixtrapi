@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: Mixtrapi
+message: If you use Mixtrapi, please cite it as below.
+type: software
+authors:
+  - family-names: Hagmar
+    given-names: Jonas
+    email: jonas.hagmar@protonmail.com
+repository-code: https://github.com/jhagmar/mixtrapi
+license: MIT
+abstract: Mixtrapi is a protocol for a web editor talking to a language host.

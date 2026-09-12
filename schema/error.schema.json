@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jhagmar/mixtrapi/schema/error.schema.json",
+  "title": "Error",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["error", "message"],
+  "properties": {
+    "error": { "type": "string", "minLength": 1 },
+    "message": { "type": "string", "minLength": 1 }
+  }
+}
