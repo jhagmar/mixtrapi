@@ -20,7 +20,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup Node
-        uses: actions/setup-node@49933ea5288caecaeb52321d32bb4b6a5bc1f85c # v4.4.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
@@ -36,7 +36,7 @@ jobs:
         run: npm run conformance
       - name: Codecov
         if: matrix.node-version == 22
-        uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8d63d554 # v5.4.3
+        uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
         with:
           files: coverage/lcov.info
           fail_ci_if_error: false
