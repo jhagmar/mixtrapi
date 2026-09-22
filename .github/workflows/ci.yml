@@ -36,7 +36,7 @@ jobs:
         run: npm run conformance
       - name: Codecov
         if: matrix.node-version == 22
-        uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           files: coverage/lcov.info
           fail_ci_if_error: false
